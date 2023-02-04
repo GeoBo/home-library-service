@@ -1,15 +1,14 @@
-import { DB } from 'src/db/db';
 import { Artist } from './entities/artist.entity';
-import { Injectable } from '@nestjs/common';
+import { Inject, Injectable } from '@nestjs/common';
 import { CreateArtistDto } from './dto/create-artist.dto';
 import { UpdateArtistDto } from './dto/update-artist.dto';
 import { v4 as uuid } from 'uuid';
 import { NotFoundException } from '@nestjs/common/exceptions';
+import { dbProvider } from 'src/db/db';
 
 @Injectable()
 export class ArtistService {
-  //private readonly artists: Artist[] = [];
-  private readonly artists = new DB().artists;
+  constructor(@Inject(dbProvider) private readonly db: dbProvider) {}
 
   create({ name, grammy }: CreateArtistDto): Artist {
     const newArtist = new Artist({
@@ -18,37 +17,42 @@ export class ArtistService {
       grammy,
     });
 
-    this.artists.push(newArtist);
+    this.db.artists.push(newArtist);
     return newArtist;
   }
 
   findAll(): Artist[] {
-    return this.artists;
+    return this.db.artists;
   }
 
   findOne(id: string): Artist {
-    const artist = this.artists.find((artist) => artist.id === id);
+    const artist = this.db.artists.find((artist) => artist.id === id);
     if (!artist) throw new NotFoundException(`Artist with id: ${id} not found`);
     return artist;
   }
 
   update(id: string, updateArtistDto: UpdateArtistDto): Artist {
-    const artistIndex = this.artists.findIndex((entity) => entity.id === id);
+    const artistIndex = this.db.artists.findIndex((entity) => entity.id === id);
     if (artistIndex === -1) {
       throw new NotFoundException(`Artist with id: ${id} not found`);
     }
-    const changed = { ...this.artists[artistIndex], ...updateArtistDto };
-    this.artists.splice(artistIndex, 1, changed);
+    const changed = { ...this.db.artists[artistIndex], ...updateArtistDto };
+    this.db.artists.splice(artistIndex, 1, changed);
     return changed;
   }
 
   remove(id: string) {
-    const artistIndex = this.artists.findIndex((user) => user.id === id);
+    const artistIndex = this.db.artists.findIndex((user) => user.id === id);
     if (artistIndex === -1) {
       throw new NotFoundException(`Artist with id: ${id} not found`);
     }
-    const deleted = this.artists[artistIndex];
-    this.artists.splice(artistIndex, 1);
+    const deleted = this.db.artists[artistIndex];
+    this.db.artists.splice(artistIndex, 1);
+
+    this.db.tracks
+      .filter((entity) => (entity.artistId = id))
+      .forEach((item) => (item.artistId = null));
+
     return deleted;
   }
 }
