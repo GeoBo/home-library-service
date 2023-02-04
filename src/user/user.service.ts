@@ -5,13 +5,15 @@ import { User } from './entities/user.entity';
 import { v4 as uuid } from 'uuid';
 import { NotFoundException } from '@nestjs/common/exceptions';
 import { ForbiddenException } from '@nestjs/common/exceptions/forbidden.exception';
+import { DB } from 'src/db/db';
 
 @Injectable()
 export class UserService {
-  private readonly users: User[] = [];
+  //private readonly users: User[] = [];
+  private readonly users = new DB().users;
 
   create({ login, password }: CreateUserDto): User {
-    const newUser: User = new User({
+    const newUser = new User({
       id: uuid(),
       login,
       password,
@@ -24,17 +26,17 @@ export class UserService {
     return newUser;
   }
 
-  findAll() {
+  findAll(): User[] {
     return this.users;
   }
 
-  findOne(id: string) {
+  findOne(id: string): User {
     const user = this.users.find((user) => user.id === id);
     if (!user) throw new NotFoundException(`User with id: ${id} not found`);
     return user;
   }
 
-  update(id: string, { oldPassword, newPassword }: UpdateUserDto) {
+  update(id: string, { oldPassword, newPassword }: UpdateUserDto): User {
     const user = this.users.find((user) => user.id === id);
     if (!user) throw new NotFoundException(`User with id: ${id} not found`);
     if (user.password !== oldPassword) {
@@ -51,7 +53,8 @@ export class UserService {
     if (userIndex === -1) {
       throw new NotFoundException(`User with id: ${id} not found`);
     }
+    const deleted = this.users[userIndex];
     this.users.splice(userIndex, 1);
-    return {};
+    return deleted;
   }
 }
