@@ -41,7 +41,7 @@ export class ArtistService {
     return changed;
   }
 
-  remove(id: string) {
+  remove(id: string): Artist {
     const artistIndex = this.db.artists.findIndex((user) => user.id === id);
     if (artistIndex === -1) {
       throw new NotFoundException(`Artist with id: ${id} not found`);
@@ -49,6 +49,7 @@ export class ArtistService {
     const deleted = this.db.artists[artistIndex];
     this.db.artists.splice(artistIndex, 1);
 
+    //Reset artistId in tracks
     this.db.tracks
       .filter((entity) => (entity.artistId = id))
       .forEach((item) => (item.artistId = null));

@@ -14,7 +14,7 @@ import { dbProvider } from 'src/db/db';
 export class TrackService {
   constructor(@Inject(dbProvider) private readonly db: dbProvider) {}
 
-  create({ name, artistId, albumId, duration }: CreateTrackDto) {
+  create({ name, artistId, albumId, duration }: CreateTrackDto): Track {
     //Можно проверить наличие albumId и artistId в базе
     if (artistId) {
       const artist = this.db.artists.find((entity) => entity.id === artistId);
@@ -25,14 +25,14 @@ export class TrackService {
       }
     }
 
-    // if (albumId) {
-    //   const album = this.db.albums.find((entity) => entity.id === albumId);
-    //   if (!album) {
-    //     throw new BadRequestException(
-    //       `Album with id: ${albumId} does not exist`,
-    //     );
-    //   }
-    // }
+    if (albumId) {
+      const album = this.db.albums.find((entity) => entity.id === albumId);
+      if (!album) {
+        throw new BadRequestException(
+          `Album with id: ${albumId} does not exist`,
+        );
+      }
+    }
 
     const newTrack = new Track({
       id: uuid(),
@@ -56,17 +56,38 @@ export class TrackService {
     return track;
   }
 
-  update(id: string, updateTrackDto: UpdateTrackDto) {
+  update(id: string, updateTrackDto: UpdateTrackDto): Track {
+    const { artistId, albumId } = updateTrackDto;
+
     const trackIndex = this.db.tracks.findIndex((entity) => entity.id === id);
     if (trackIndex === -1) {
       throw new NotFoundException(`Track with id: ${id} not found`);
     }
+
+    if (artistId) {
+      const artist = this.db.artists.find((entity) => entity.id === artistId);
+      if (!artist) {
+        throw new BadRequestException(
+          `Artist with id: '${artistId}' does not exist`,
+        );
+      }
+    }
+
+    if (albumId) {
+      const album = this.db.albums.find((entity) => entity.id === albumId);
+      if (!album) {
+        throw new BadRequestException(
+          `Album with id: ${albumId} does not exist`,
+        );
+      }
+    }
+
     const changed = { ...this.db.tracks[trackIndex], ...updateTrackDto };
     this.db.tracks.splice(trackIndex, 1, changed);
     return changed;
   }
 
-  remove(id: string) {
+  remove(id: string): Track {
     const trackIndex = this.db.tracks.findIndex((entity) => entity.id === id);
     if (trackIndex === -1) {
       throw new NotFoundException(`Track with id: ${id} not found`);

@@ -47,7 +47,7 @@ export class UserService {
     return user;
   }
 
-  remove(id: string) {
+  remove(id: string): User {
     const userIndex = this.db.users.findIndex((user) => user.id === id);
     if (userIndex === -1) {
       throw new NotFoundException(`User with id: ${id} not found`);
