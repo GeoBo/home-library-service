@@ -12,7 +12,7 @@ export class FavsService {
   constructor(@Inject(dbProvider) private readonly db: dbProvider) {}
 
   findAll(): FavsResponse {
-    console.log(this.db.favs.artists, this.db.favs.albums, this.db.favs.tracks);
+    //console.log(this.db.favs.artists, this.db.favs.albums, this.db.favs.tracks);
     const favsResp = new FavsResponse({
       artists: [],
       albums: [],
