@@ -11,14 +11,14 @@ async function bootstrap() {
       transform: true,
     }),
   );
-  //app.enableCors({ origin: 'http://localhost:4000' });
+  app.enableCors({ origin: 'http://localhost:4000' });
 
   const config = new DocumentBuilder()
     .setTitle('Home Library Service')
     .setDescription('Home music library service')
     .setVersion('1.0')
     .addServer('/')
-    //.addServer('http://localhost:4000')
+    .addServer('http://localhost:4000')
     .build();
   const document = SwaggerModule.createDocument(app, config);
   SwaggerModule.setup('api', app, document);
