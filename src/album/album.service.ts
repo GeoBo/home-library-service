@@ -81,6 +81,10 @@ export class AlbumService {
       .filter((entity) => (entity.albumId = id))
       .forEach((item) => (item.albumId = null));
 
+    //Remove albumId in favorites
+    const albumFavsIndex = this.db.favs.albums.indexOf(id);
+    if (albumFavsIndex !== -1) this.db.favs.albums.splice(albumFavsIndex, 1);
+
     return deleted;
   }
 }

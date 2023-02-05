@@ -94,6 +94,11 @@ export class TrackService {
     }
     const deleted = this.db.tracks[trackIndex];
     this.db.tracks.splice(trackIndex, 1);
+
+    //Remove trackId in favorites
+    const trackFavsIndex = this.db.favs.tracks.indexOf(id);
+    if (trackFavsIndex !== -1) this.db.favs.tracks.splice(trackFavsIndex, 1);
+
     return deleted;
   }
 }

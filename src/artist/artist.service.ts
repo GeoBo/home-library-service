@@ -54,6 +54,10 @@ export class ArtistService {
       .filter((entity) => (entity.artistId = id))
       .forEach((item) => (item.artistId = null));
 
+    //Remove artistId in favorites
+    const artistFavsIndex = this.db.favs.artists.indexOf(id);
+    if (artistFavsIndex !== -1) this.db.favs.albums.splice(artistFavsIndex, 1);
+
     return deleted;
   }
 }
