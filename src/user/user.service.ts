@@ -39,7 +39,7 @@ export class UserService {
     const user = this.db.users.find((user) => user.id === id);
     if (!user) throw new NotFoundException(`User with id: ${id} not found`);
     if (user.password !== oldPassword) {
-      throw new ForbiddenException(`Wrong password`);
+      throw new ForbiddenException(`Wrong old password`);
     }
     user.password = newPassword;
     user.version += 1;

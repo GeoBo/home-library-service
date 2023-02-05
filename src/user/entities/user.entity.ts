@@ -1,3 +1,4 @@
+import { ApiHideProperty } from '@nestjs/swagger/dist/decorators';
 import { Exclude } from 'class-transformer';
 
 export class User {
@@ -5,6 +6,7 @@ export class User {
   login: string;
 
   @Exclude()
+  @ApiHideProperty()
   password: string;
 
   version: number; // integer number, increments on update
