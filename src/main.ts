@@ -9,11 +9,13 @@ const homeURL = `http://localhost:${port}`;
 
 async function bootstrap() {
   const app = await NestFactory.create(AppModule);
+
   app.useGlobalPipes(
     new ValidationPipe({
       transform: true,
     }),
   );
+
   app.enableCors({ origin: homeURL });
 
   const config = new DocumentBuilder()
@@ -23,6 +25,7 @@ async function bootstrap() {
     .addServer('/')
     .addServer(homeURL)
     .build();
+
   const document = SwaggerModule.createDocument(app, config);
   SwaggerModule.setup('api', app, document);
 
