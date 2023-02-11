@@ -21,6 +21,7 @@ import {
   ApiNotFoundResponse,
   ApiOperation,
 } from '@nestjs/swagger/dist/decorators';
+import { User } from './entities/user.entity';
 
 @ApiTags('Users')
 @Controller('user')
@@ -37,7 +38,7 @@ export class UserController {
   @ApiBadRequestResponse({
     description: 'Bad request. body does not contain required fields',
   })
-  create(@Body() createUserDto: CreateUserDto) {
+  create(@Body() createUserDto: CreateUserDto): Promise<User> {
     return this.userService.create(createUserDto);
   }
 
@@ -46,7 +47,7 @@ export class UserController {
     summary: 'Get all users',
     description: 'Get all users',
   })
-  findAll() {
+  async findAll(): Promise<User[]> {
     return this.userService.findAll();
   }
 
@@ -59,7 +60,7 @@ export class UserController {
     description: 'Bad request. userId is invalid (not uuid)',
   })
   @ApiNotFoundResponse({ description: 'User not found' })
-  findOne(@Param('id', new ParseUUIDPipe()) id: string) {
+  findOne(@Param('id', new ParseUUIDPipe()) id: string): Promise<User> {
     return this.userService.findOne(id);
   }
 

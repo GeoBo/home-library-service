@@ -1,19 +1,26 @@
-import { Inject, Injectable } from '@nestjs/common';
-import { CreateUserDto } from './dto/create-user.dto';
-import { UpdateUserDto } from './dto/update-user.dto';
+import { Injectable } from '@nestjs/common';
 import { User } from './entities/user.entity';
-import { v4 as uuid } from 'uuid';
-import { NotFoundException } from '@nestjs/common/exceptions';
-import { ForbiddenException } from '@nestjs/common/exceptions/forbidden.exception';
-import { dbProvider } from 'src/db/db';
+import { InjectRepository } from '@nestjs/typeorm';
+import { Repository } from 'typeorm';
+import { CreateUserDto } from './dto/create-user.dto';
+import {
+  ForbiddenException,
+  NotFoundException,
+} from '@nestjs/common/exceptions';
+import { UpdateUserDto } from './dto/update-user.dto';
 
 @Injectable()
 export class UserService {
-  constructor(@Inject(dbProvider) private readonly db: dbProvider) {}
+  constructor(
+    @InjectRepository(User) private readonly users: Repository<User>,
+  ) {}
 
-  create({ login, password }: CreateUserDto): User {
-    const newUser = new User({
-      id: uuid(),
+  findAll(): Promise<User[]> {
+    return this.users.find();
+  }
+
+  create({ login, password }: CreateUserDto): Promise<User> {
+    const user = this.users.create({
       login,
       password,
       version: 1,
@@ -21,39 +28,37 @@ export class UserService {
       updatedAt: new Date().getTime(),
     });
 
-    this.db.users.push(newUser);
-    return newUser;
+    return this.users.save(user);
   }
 
-  findAll(): User[] {
-    return this.db.users;
-  }
-
-  findOne(id: string): User {
-    const user = this.db.users.find((user) => user.id === id);
+  async findOne(id: string): Promise<User> {
+    const user = await this.users.findOneBy({ id });
     if (!user) throw new NotFoundException(`User with id: ${id} not found`);
     return user;
   }
 
-  update(id: string, { oldPassword, newPassword }: UpdateUserDto): User {
-    const user = this.db.users.find((user) => user.id === id);
-    if (!user) throw new NotFoundException(`User with id: ${id} not found`);
+  async update(
+    id: string,
+    { oldPassword, newPassword }: UpdateUserDto,
+  ): Promise<User> {
+    const user = await this.findOne(id);
     if (user.password !== oldPassword) {
       throw new ForbiddenException(`Wrong old password`);
     }
-    user.password = newPassword;
-    user.version += 1;
-    user.updatedAt = new Date().getTime();
-    return user;
+
+    const partialUser = {
+      password: newPassword,
+      version: (user.version += 1),
+      updatedAt: new Date().getTime(),
+    };
+
+    this.users.merge(user, partialUser);
+
+    return this.users.save(user);
   }
 
-  remove(id: string): User {
-    const userIndex = this.db.users.findIndex((user) => user.id === id);
-    if (userIndex === -1) {
-      throw new NotFoundException(`User with id: ${id} not found`);
-    }
-    const deleted = this.db.users[userIndex];
-    this.db.users.splice(userIndex, 1);
-    return deleted;
+  async remove(id: string): Promise<User> {
+    const user = await this.findOne(id);
+    return await this.users.remove(user);
   }
 }

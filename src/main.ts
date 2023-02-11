@@ -5,7 +5,6 @@ import { SwaggerModule } from '@nestjs/swagger/dist';
 import { AppModule } from './app.module';
 
 const port = process.env.PORT || 4000;
-const homeURL = `http://localhost:${port}`;
 
 async function bootstrap() {
   const app = await NestFactory.create(AppModule);
@@ -16,14 +15,11 @@ async function bootstrap() {
     }),
   );
 
-  app.enableCors({ origin: homeURL });
-
   const config = new DocumentBuilder()
     .setTitle('Home Library Service')
     .setDescription('Home music library service')
     .setVersion('1.0')
     .addServer('/')
-    .addServer(homeURL)
     .build();
 
   const document = SwaggerModule.createDocument(app, config);
