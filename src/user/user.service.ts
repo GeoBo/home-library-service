@@ -23,7 +23,7 @@ export class UserService {
     const user = this.users.create({
       login,
       password,
-      version: 1,
+      //version: 1,
       createdAt: new Date().getTime(),
       updatedAt: new Date().getTime(),
     });
@@ -48,7 +48,6 @@ export class UserService {
 
     const partialUser = {
       password: newPassword,
-      version: (user.version += 1),
       updatedAt: new Date().getTime(),
     };
 

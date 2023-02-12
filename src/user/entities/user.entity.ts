@@ -1,6 +1,6 @@
 import { ApiHideProperty } from '@nestjs/swagger/dist/decorators';
 import { Exclude } from 'class-transformer';
-import { Column, Entity, PrimaryGeneratedColumn } from 'typeorm';
+import { Column, Entity, PrimaryGeneratedColumn, VersionColumn } from 'typeorm';
 
 @Entity()
 export class User {
@@ -15,7 +15,7 @@ export class User {
   @ApiHideProperty()
   password: string;
 
-  @Column()
+  @VersionColumn()
   version: number;
 
   @Column('bigint')
