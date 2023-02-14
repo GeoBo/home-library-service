@@ -1,6 +1,13 @@
 import { ApiHideProperty } from '@nestjs/swagger/dist/decorators';
-import { Exclude } from 'class-transformer';
-import { Column, Entity, PrimaryGeneratedColumn, VersionColumn } from 'typeorm';
+import { Exclude, Transform, Type } from 'class-transformer';
+import {
+  Column,
+  CreateDateColumn,
+  Entity,
+  PrimaryGeneratedColumn,
+  UpdateDateColumn,
+  VersionColumn,
+} from 'typeorm';
 
 @Entity()
 export class User {

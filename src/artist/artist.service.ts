@@ -5,11 +5,13 @@ import { UpdateArtistDto } from './dto/update-artist.dto';
 import { NotFoundException } from '@nestjs/common/exceptions';
 import { InjectRepository } from '@nestjs/typeorm';
 import { Repository } from 'typeorm';
+import { Favs } from 'src/favs/entities/favs.entity';
 
 @Injectable()
 export class ArtistService {
   constructor(
     @InjectRepository(Artist) private readonly artists: Repository<Artist>,
+    @InjectRepository(Favs) private readonly favs: Repository<Favs>,
   ) {}
 
   findAll(): Promise<Artist[]> {
@@ -39,26 +41,14 @@ export class ArtistService {
 
   async remove(id: string): Promise<Artist> {
     const artist = await this.findOne(id);
+
+    //Remove artistId in favorites
+    const favs = (await this.favs.find())[0];
+    const artistFavsIndex = favs.artists.indexOf(id);
+    if (artistFavsIndex !== -1) {
+      favs.artists.splice(artistFavsIndex, 1);
+      await this.favs.save(favs);
+    }
     return await this.artists.remove(artist);
   }
-
-  // remove(id: string): Artist {
-  //   const artistIndex = this.db.artists.findIndex((user) => user.id === id);
-  //   if (artistIndex === -1) {
-  //     throw new NotFoundException(`Artist with id: ${id} not found`);
-  //   }
-  //   const deleted = this.db.artists[artistIndex];
-  //   this.db.artists.splice(artistIndex, 1);
-
-  //   //Reset artistId in tracks
-  //   this.db.tracks
-  //     .filter((entity) => (entity.artistId = id))
-  //     .forEach((item) => (item.artistId = null));
-
-  //   //Remove artistId in favorites
-  //   const artistFavsIndex = this.db.favs.artists.indexOf(id);
-  //   if (artistFavsIndex !== -1) this.db.favs.albums.splice(artistFavsIndex, 1);
-
-  //   return deleted;
-  // }
 }

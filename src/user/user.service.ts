@@ -19,11 +19,9 @@ export class UserService {
     return this.users.find();
   }
 
-  create({ login, password }: CreateUserDto): Promise<User> {
+  create(createUserDto: CreateUserDto): Promise<User> {
     const user = this.users.create({
-      login,
-      password,
-      //version: 1,
+      ...createUserDto,
       createdAt: new Date().getTime(),
       updatedAt: new Date().getTime(),
     });

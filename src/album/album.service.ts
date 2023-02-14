@@ -9,26 +9,23 @@ import { Album } from './entities/album.entity';
 import { InjectRepository } from '@nestjs/typeorm';
 import { Repository } from 'typeorm';
 import { Artist } from 'src/artist/entities/artist.entity';
+import { Favs } from 'src/favs/entities/favs.entity';
 
 @Injectable()
 export class AlbumService {
   constructor(
     @InjectRepository(Album) private readonly albums: Repository<Album>,
     @InjectRepository(Artist) private readonly artists: Repository<Artist>,
+    @InjectRepository(Favs) private readonly favs: Repository<Favs>,
   ) {}
 
   findAll(): Promise<Album[]> {
     return this.albums.find();
   }
 
-  async create({ name, year, artistId }: CreateAlbumDto): Promise<Album> {
-    await this.checkArtist(artistId);
-    const album = this.albums.create({
-      name,
-      year,
-      artistId,
-    });
-
+  async create(createAlbumDto: CreateAlbumDto): Promise<Album> {
+    await this.checkArtist(createAlbumDto.artistId);
+    const album = this.albums.create(createAlbumDto);
     return this.albums.save(album);
   }
 
@@ -48,6 +45,14 @@ export class AlbumService {
 
   async remove(id: string): Promise<Album> {
     const album = await this.findOne(id);
+
+    //Remove albumId in favorites
+    const favs = (await this.favs.find())[0];
+    const albumFavsIndex = favs.albums.indexOf(id);
+    if (albumFavsIndex !== -1) {
+      favs.albums.splice(albumFavsIndex, 1);
+      await this.favs.save(favs);
+    }
     return await this.albums.remove(album);
   }
 
@@ -59,24 +64,4 @@ export class AlbumService {
       }
     }
   }
-
-  // remove(id: string): Album {
-  //   const albumIndex = this.db.albums.findIndex((entity) => entity.id === id);
-  //   if (albumIndex === -1) {
-  //     throw new NotFoundException(`Album with id: ${id} not found`);
-  //   }
-  //   const deleted = this.db.albums[albumIndex];
-  //   this.db.albums.splice(albumIndex, 1);
-
-  //   //Reset albumId in tracks
-  //   this.db.tracks
-  //     .filter((entity) => (entity.albumId = id))
-  //     .forEach((item) => (item.albumId = null));
-
-  //   //Remove albumId in favorites
-  //   const albumFavsIndex = this.db.favs.albums.indexOf(id);
-  //   if (albumFavsIndex !== -1) this.db.favs.albums.splice(albumFavsIndex, 1);
-
-  //   return deleted;
-  // }
 }
