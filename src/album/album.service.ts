@@ -40,7 +40,7 @@ export class AlbumService {
     await this.checkArtist(updateAlbumDto.artistId);
 
     this.albums.merge(album, updateAlbumDto);
-    return this.artists.save(album);
+    return this.albums.save(album);
   }
 
   async remove(id: string): Promise<Album> {
