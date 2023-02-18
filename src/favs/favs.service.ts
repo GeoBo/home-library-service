@@ -39,7 +39,7 @@ export class FavsService implements OnModuleInit {
     const artists = await this.artists.findBy({ id: In(favs.artists) });
     const albums = await this.albums.findBy({ id: In(favs.albums) });
     const tracks = await this.tracks.findBy({ id: In(favs.tracks) });
-    console.log(favs);
+    // console.log(favs);
     const favsResp = new FavsResponse({
       artists,
       albums,

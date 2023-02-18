@@ -1,4 +1,4 @@
-FROM node:18-alpine
+FROM node:19-alpine
 
 WORKDIR /app
 
@@ -10,4 +10,6 @@ COPY . ./
 
 EXPOSE 4000
 
-CMD ["npm", "run", "nodemon"]
+CMD npm run migration:gen && npm run nodemon
+
+# CMD ["npm", "run", "nodemon"]

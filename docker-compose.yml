@@ -21,13 +21,12 @@ services:
         condition: service_started
   db:
     container_name: db
-    image: postgres:15-alpine
+    build:
+      dockerfile: src/db/Dockerfile
+      context: .
     restart: always
-    environment:
-      POSTGRES_DB: ${POSTGRES_DB}
-      POSTGRES_USER: ${POSTGRES_USER}
-      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD}
-      # PG_DATA: /var/lib/postgresql/data
+    env_file:
+      - .env
     ports:
       - '5432:5432'
     volumes:
@@ -38,7 +37,6 @@ services:
 networks:
   mynet:
     driver: bridge
-
 
 volumes:
   db-data:
