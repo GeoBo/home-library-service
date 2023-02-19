@@ -14,21 +14,3 @@ export class Favs {
   @Column('simple-array')
   tracks: string[];
 }
-
-// @Entity()
-// export class Favs {
-//   @PrimaryGeneratedColumn('uuid')
-//   id?: string;
-
-//   @JoinTable()
-//   @ManyToMany(() => Artist, { onDelete: 'CASCADE', eager: true })
-//   artists: Artist[];
-
-//   @JoinTable()
-//   @ManyToMany(() => Album, { onDelete: 'CASCADE', eager: true })
-//   albums: Album[];
-
-//   @JoinTable()
-//   @ManyToMany(() => Track, { onDelete: 'CASCADE', eager: true })
-//   tracks: Track[];
-// }

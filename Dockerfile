@@ -8,8 +8,6 @@ RUN npm ci
 
 COPY . ./
 
-EXPOSE 4000
+EXPOSE ${PORT}
 
 CMD npm run migration:gen && npm run nodemon
-
-# CMD ["npm", "run", "nodemon"]
