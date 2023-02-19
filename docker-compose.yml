@@ -3,10 +3,11 @@ services:
   app:
     container_name: app
     restart: unless-stopped
-    # image: tag from docker Hub
-    build:
-      dockerfile: Dockerfile
-      context: .
+    image: geobo/music-library:app
+    build: .
+    # build:
+    #   dockerfile: Dockerfile
+    #   context: .
     ports:
       - '${PORT}:${PORT}'
     env_file:
@@ -21,9 +22,10 @@ services:
         condition: service_started
   db:
     container_name: db
-    build:
-      dockerfile: src/db/Dockerfile
-      context: .
+    image: geobo/music-library:db
+    # build:
+    #   dockerfile: src/db/Dockerfile
+    #   context: .
     restart: unless-stopped
     env_file:
       - .env
