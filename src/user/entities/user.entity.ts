@@ -22,7 +22,7 @@ export class User {
   login: string;
 
   @Column()
-  @Exclude()
+  @Exclude({ toPlainOnly: true })
   @ApiHideProperty()
   password: string;
 

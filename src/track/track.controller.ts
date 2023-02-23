@@ -26,7 +26,6 @@ export class TrackController {
   constructor(private readonly trackService: TrackService) {}
 
   @Post()
-  @HttpCode(201)
   @ApiOperation({
     summary: 'Add new track',
     description: 'Add new track information',

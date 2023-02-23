@@ -18,7 +18,6 @@ export class ArtistController {
   constructor(private readonly artistService: ArtistService) {}
 
   @Post()
-  @HttpCode(201)
   @ApiBadRequestResponse({
     description: 'Bad request. body does not contain required fields',
   })

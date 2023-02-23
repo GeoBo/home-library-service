@@ -22,6 +22,7 @@ import {
   ApiOperation,
 } from '@nestjs/swagger/dist/decorators';
 import { User } from './entities/user.entity';
+import { Public } from 'src/decorators/public';
 
 @ApiTags('Users')
 @Controller('user')
@@ -29,8 +30,8 @@ import { User } from './entities/user.entity';
 export class UserController {
   constructor(private readonly userService: UserService) {}
 
+  @Public()
   @Post()
-  @HttpCode(201)
   @ApiOperation({
     summary: 'Create user',
     description: 'Creates a new user',

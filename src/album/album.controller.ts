@@ -26,7 +26,6 @@ export class AlbumController {
   constructor(private readonly albumService: AlbumService) {}
 
   @Post()
-  @HttpCode(201)
   @ApiOperation({
     summary: 'Add new album',
     description: 'Add new album information',
