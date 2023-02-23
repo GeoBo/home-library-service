@@ -8,6 +8,7 @@ import {
   NotFoundException,
 } from '@nestjs/common/exceptions';
 import { UpdateUserDto } from './dto/update-user.dto';
+import { checkHash, getHash } from 'src/lib/crypto';
 
 @Injectable()
 export class UserService {
@@ -19,9 +20,11 @@ export class UserService {
     return this.users.find();
   }
 
-  create(createUserDto: CreateUserDto): Promise<User> {
+  async create(createUserDto: CreateUserDto): Promise<User> {
+    const password = await getHash(createUserDto.password);
     const user = this.users.create({
       ...createUserDto,
+      password,
       createdAt: new Date().getTime(),
       updatedAt: new Date().getTime(),
     });
@@ -40,12 +43,14 @@ export class UserService {
     { oldPassword, newPassword }: UpdateUserDto,
   ): Promise<User> {
     const user = await this.findOne(id);
-    if (user.password !== oldPassword) {
+    const isMatch = await checkHash(oldPassword, user.password);
+    if (!isMatch) {
       throw new ForbiddenException(`Wrong old password`);
     }
 
+    const newPasswordHash = await getHash(newPassword);
     const partialUser = {
-      password: newPassword,
+      password: newPasswordHash,
       updatedAt: new Date().getTime(),
     };
 

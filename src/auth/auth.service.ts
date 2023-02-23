@@ -4,6 +4,7 @@ import { Injectable } from '@nestjs/common';
 import { User } from 'src/user/entities/user.entity';
 import { ForbiddenException } from '@nestjs/common/exceptions';
 import { JwtService } from '@nestjs/jwt';
+import { checkHash } from 'src/lib/crypto';
 
 @Injectable()
 export class AuthService {
@@ -14,15 +15,14 @@ export class AuthService {
 
   async validateUser(username: string, password: string): Promise<any> {
     const user = await this.users.findOneBy({ login: username });
-    if (!user || user.password !== password) {
+    const isMatch = await checkHash(password, user.password);
+    if (!user || !isMatch) {
       throw new ForbiddenException();
     }
-    //delete user.password;
 
     const payload = { username, sub: user.id };
     return {
       access_token: this.jwtService.sign(payload),
     };
-    //return user;
   }
 }
