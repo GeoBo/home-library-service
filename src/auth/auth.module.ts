@@ -1,3 +1,4 @@
+import { TokenModule } from 'src/lib/token/token.module';
 import { UserModule } from './../user/user.module';
 import { APP_GUARD } from '@nestjs/core';
 import { Module } from '@nestjs/common';
@@ -21,10 +22,8 @@ import { JwtAuthGuard, JwtStrategy } from './jwt.strategy';
   imports: [
     UserModule,
     TypeOrmModule.forFeature([User]),
-    JwtModule.register({
-      secret: process.env.JWT_SECRET_KEY,
-      signOptions: { expiresIn: process.env.TOKEN_EXPIRE_TIME },
-    }),
+    JwtModule,
+    TokenModule,
   ],
 })
 export class AuthModule {}

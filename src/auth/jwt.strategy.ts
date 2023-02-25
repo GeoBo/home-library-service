@@ -4,19 +4,26 @@ import { PassportStrategy } from '@nestjs/passport';
 import { ExecutionContext, Injectable } from '@nestjs/common';
 import { Reflector } from '@nestjs/core';
 import { IS_PUBLIC_KEY } from 'src/decorators/public';
+import { TokenService } from 'src/lib/token/token.service';
+import { ForbiddenException } from '@nestjs/common/exceptions';
 
 @Injectable()
 export class JwtStrategy extends PassportStrategy(Strategy) {
-  constructor() {
+  constructor(private readonly tokenService: TokenService) {
     super({
       jwtFromRequest: ExtractJwt.fromAuthHeaderAsBearerToken(),
       ignoreExpiration: false,
       secretOrKey: process.env.JWT_SECRET_KEY,
+      passReqToCallback: true,
     });
   }
 
-  async validate(payload: any) {
-    return { username: payload.login, userId: payload.sub };
+  validate({ headers }: Request, { login, sub }) {
+    const token = headers['authorization'].split(' ')[1];
+    if (!this.tokenService.isValid(token)) {
+      throw new ForbiddenException('Blacklisted token');
+    }
+    return { username: login, userId: sub };
   }
 }
 

@@ -1,11 +1,15 @@
 import { Controller } from '@nestjs/common';
 import { Post, HttpCode, UseInterceptors } from '@nestjs/common/decorators';
-import { Body } from '@nestjs/common/decorators/http/route-params.decorator';
+import {
+  Body,
+  Headers,
+} from '@nestjs/common/decorators/http/route-params.decorator';
 import { ClassSerializerInterceptor } from '@nestjs/common/serializer';
 import { Public } from 'src/decorators/public';
 import { CreateUserDto } from 'src/user/dto/create-user.dto';
 import { UserService } from 'src/user/user.service';
 import { AuthService } from './auth.service';
+import { RefreshTokenDto } from './dto/refreshToken.dto';
 
 @Controller('auth')
 @UseInterceptors(ClassSerializerInterceptor)
@@ -26,5 +30,14 @@ export class AuthController {
   @HttpCode(200)
   async login(@Body() { login, password }: CreateUserDto) {
     return this.authService.validateUser(login, password);
+  }
+
+  @Post('refresh')
+  @HttpCode(200)
+  async refresh(
+    @Headers('authorization') authHeader: string,
+    @Body() { refreshToken }: RefreshTokenDto,
+  ) {
+    return this.authService.validateRefreshToken(authHeader, refreshToken);
   }
 }
