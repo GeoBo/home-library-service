@@ -5,7 +5,6 @@ const level = Number(process.env.LOG_LEVEL);
 
 export class LoggerService extends ConsoleLogger {
   log(message: any, stack?: string) {
-    // console.log(stack);
     if (
       stack === 'InstanceLoader' ||
       stack === 'RouterExplorer' ||

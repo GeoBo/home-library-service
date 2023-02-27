@@ -6,7 +6,7 @@ import { CreateUserDto } from './dto/create-user.dto';
 import {
   ForbiddenException,
   NotFoundException,
-  BadRequestException,
+  // BadRequestException,
 } from '@nestjs/common/exceptions';
 import { UpdateUserDto } from './dto/update-user.dto';
 import { checkHash, getHash } from 'src/lib/crypto';
@@ -22,13 +22,13 @@ export class UserService {
   }
 
   async create(createUserDto: CreateUserDto): Promise<User> {
-    const { login } = createUserDto;
-    const user = await this.users.findOneBy({ login });
-    if (user) {
-      throw new BadRequestException(
-        `User with login: "${login}" already exists`,
-      );
-    }
+    // const { login } = createUserDto;
+    // const user = await this.users.findOneBy({ login });
+    // if (user) {
+    //   throw new BadRequestException(
+    //     `User with login: "${login}" already exists`,
+    //   );
+    // }
     const password = await getHash(createUserDto.password);
     const newUser = this.users.create({
       ...createUserDto,

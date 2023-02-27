@@ -12,8 +12,9 @@ import { AppDataSource } from './db/ormconfig';
 import { AuthModule } from './auth/auth.module';
 import { LoggerMiddleware } from './middleware/logger.middleware';
 import { LoggerModule } from './lib/logger/logger.module';
-import { HttpExceptionFilter } from './filters/httpExceptionFilter';
+import { HttpExceptionFilter } from './filters/httpExceptionsFilter';
 import { APP_FILTER } from '@nestjs/core';
+import { AllExceptionsFilter } from './filters/allExceptionsFilter';
 
 @Module({
   imports: [
@@ -30,6 +31,10 @@ import { APP_FILTER } from '@nestjs/core';
   controllers: [AppController],
   providers: [
     AppService,
+    {
+      provide: APP_FILTER,
+      useClass: AllExceptionsFilter,
+    },
     {
       provide: APP_FILTER,
       useClass: HttpExceptionFilter,
