@@ -1,0 +1,44 @@
+version: "3.9"
+services:
+  app:
+    container_name: app
+    restart: unless-stopped
+    # image: geobo/music-library:app
+    # build: .
+    build:
+      dockerfile: Dockerfile
+      context: .
+    ports:
+      - '${PORT}:${PORT}'
+    env_file:
+      - .env
+    volumes:
+      - .:/app
+      - /app/node_modules
+    networks:
+      - mynet
+    depends_on: 
+      db:
+        condition: service_started
+  db:
+    container_name: db
+    # image: geobo/music-library:db
+    build:
+      dockerfile: src/db/Dockerfile
+      context: .
+    restart: unless-stopped
+    env_file:
+      - .env
+    ports:
+      - '${POSTGRES_PORT}:${POSTGRES_PORT}'
+    volumes:
+      - db-data:/var/lib/postgresql/data
+    networks:
+      - mynet 
+
+networks:
+  mynet:
+    driver: bridge
+
+volumes:
+  db-data:
