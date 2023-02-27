@@ -21,9 +21,12 @@ export class AuthService {
 
   async validateUser(username: string, password: string): Promise<any> {
     const user = await this.users.findOneBy({ login: username });
+    if (!user) {
+      throw new ForbiddenException('User does not exist');
+    }
     const isMatch = await checkHash(password, user.password);
-    if (!user || !isMatch) {
-      throw new ForbiddenException();
+    if (!isMatch) {
+      throw new ForbiddenException('Wrong password');
     }
 
     const payload = { username, sub: user.id };
