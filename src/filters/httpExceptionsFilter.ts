@@ -6,6 +6,7 @@ import {
   Logger,
 } from '@nestjs/common';
 import { Request, Response } from 'express';
+import { getCurrenDate } from 'src/lib/dateOperations';
 
 @Catch(HttpException)
 export class HttpExceptionFilter implements ExceptionFilter {
@@ -33,7 +34,7 @@ export class HttpExceptionFilter implements ExceptionFilter {
     response.status(status).json({
       statusCode: status,
       message,
-      timestamp: new Date().toUTCString(),
+      timestamp: getCurrenDate(),
       path: url,
     });
   }

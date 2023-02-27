@@ -1,3 +1,4 @@
+import { getCurrenDate } from 'src/lib/dateOperations';
 import {
   ExceptionFilter,
   Catch,
@@ -46,7 +47,7 @@ export class AllExceptionsFilter implements ExceptionFilter {
     const responseBody = {
       statusCode: status,
       message,
-      timestamp: new Date().toUTCString(),
+      timestamp: getCurrenDate(),
       path: url,
     };
 

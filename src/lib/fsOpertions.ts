@@ -1,6 +1,7 @@
 import { appendFileSync, readdirSync, statSync, writeFileSync } from 'fs';
 import { EOL } from 'os';
 import { join } from 'path';
+import { getCurrenDate } from './dateOperations';
 
 interface fileInfo {
   name: string;
@@ -8,16 +9,14 @@ interface fileInfo {
   size: number;
 }
 
-const logDir = `${__dirname}/../logs`;
-const ext = '.log';
-
 function saveToFile(message: string, stack = '', type = 'log') {
   let folder: string;
+  const logDir = `${__dirname}/../logs`;
   if (type === 'log') folder = 'access';
   else if (type === 'warn') folder = 'httpExceptions';
   else folder = 'errors';
 
-  const date = new Date().toUTCString().split(' ').slice(0, 5).join(' ');
+  const date = getCurrenDate();
   const mes = `[${date}] [${stack}] ${JSON.stringify(message)}${EOL}`;
   const dest = join(logDir, folder);
   try {
@@ -50,7 +49,6 @@ function getLastFile(dir: string) {
   }
 
   arr.sort((a, b) => b.time - a.time);
-  //console.log(arr);
   if (!arr.length) return null;
   return arr[0];
 }
@@ -63,7 +61,7 @@ function isValidSize(fileInfo: fileInfo): boolean {
 function getFileName(): string {
   const d = new Date();
   const timestamp = d.getTime().toString();
-  // return `${d.getDate()}-${d.getMonth()}-${d.getFullYear()}-${timestamp}`;
+  const ext = '.log';
   return timestamp + ext;
 }
 
