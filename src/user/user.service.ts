@@ -29,12 +29,14 @@ export class UserService {
     //     `User with login: "${login}" already exists`,
     //   );
     // }
+    const currentTime = new Date().getTime();
+
     const password = await getHash(createUserDto.password);
     const newUser = this.users.create({
       ...createUserDto,
       password,
-      createdAt: new Date().getTime(),
-      updatedAt: new Date().getTime(),
+      createdAt: currentTime,
+      updatedAt: currentTime,
     });
 
     return this.users.save(newUser);

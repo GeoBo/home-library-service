@@ -5,7 +5,7 @@ import {
   Headers,
 } from '@nestjs/common/decorators/http/route-params.decorator';
 import { ClassSerializerInterceptor } from '@nestjs/common/serializer';
-import { Public } from 'src/decorators/public';
+import { Public } from 'src/lib/decorators/public';
 import { CreateUserDto } from 'src/user/dto/create-user.dto';
 import { UserService } from 'src/user/user.service';
 import { AuthService } from './auth.service';

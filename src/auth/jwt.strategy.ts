@@ -3,7 +3,7 @@ import { ExtractJwt, Strategy } from 'passport-jwt';
 import { PassportStrategy } from '@nestjs/passport';
 import { ExecutionContext, Injectable } from '@nestjs/common';
 import { Reflector } from '@nestjs/core';
-import { IS_PUBLIC_KEY } from 'src/decorators/public';
+import { IS_PUBLIC_KEY } from 'src/lib/decorators/public';
 import { TokenService } from 'src/lib/token/token.service';
 import { ForbiddenException } from '@nestjs/common/exceptions';
 

@@ -10,7 +10,7 @@ import { ConfigModule } from '@nestjs/config';
 import { TypeOrmModule } from '@nestjs/typeorm';
 import { AppDataSource } from './db/ormconfig';
 import { AuthModule } from './auth/auth.module';
-import { LoggerMiddleware } from './middleware/logger.middleware';
+import { LoggerMiddleware } from './lib/middleware/logger.middleware';
 import { LoggerModule } from './lib/logger/logger.module';
 import { HttpExceptionFilter } from './filters/httpExceptionsFilter';
 import { APP_FILTER } from '@nestjs/core';
