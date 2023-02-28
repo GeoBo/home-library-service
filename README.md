@@ -1,5 +1,10 @@
 # Home Library Service - part 3
 
+## Attention!: 
+You need to create 4 directories in the "src" folder according to the picture:
+![image](https://user-images.githubusercontent.com/92945159/221950889-87661257-ffaa-4e27-86bd-f4110a9b71c5.png)
+
+
 ## Instructions:
 1. Сlone repo  
 2. Rename the file '.env.example'  to '.env'  
@@ -15,6 +20,3 @@ If DB has launched, but there are no messages from the application in the consol
 3) Error "Port is alloсated" - restart the system or assigned to the .env file to another port (change from 4000 to 4001).
 4) Error "Endpoint for "default" not found" - delete the meta.json file at 'C:\Users\your-username\.docker\contexts\meta\meta.json', it will be created automatically.
 5) If the database migration error, clean the folder "app/src/db/migrations" and run app again.
-
-## Attention!: 
-Migrations are generated and ran automatically during the launch of the application. To check the migration, stop the application, make changes in entity, and then start 'docker compose up' again.
