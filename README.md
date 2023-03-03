@@ -1,10 +1,5 @@
 # Home Library Service - part 3
 
-## Attention!: 
-You need to create 4 directories in the "src" folder according to the picture:
-![image](https://user-images.githubusercontent.com/92945159/221950889-87661257-ffaa-4e27-86bd-f4110a9b71c5.png)
-
-
 ## Instructions:
 1. Сlone repo  
 2. Rename the file '.env.example'  to '.env'  

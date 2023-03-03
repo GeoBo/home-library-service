@@ -1,0 +1,113 @@
+[03/03/23, 08:27:54] [NestApplication] "Nest application successfully started"
+[03/03/23, 08:29:05] [HTTP] {"url":"/auth/signup","method":"POST","params":{},"query":{},"body":{"login":"TEST_AUTH_LOGIN","password":"Tu6!@#%&"},"status":201,"message":"Created"}
+[03/03/23, 08:29:05] [HTTP] {"url":"/auth/signup","method":"POST","params":{},"query":{},"body":{"login":"TEST_AUTH_LOGIN","password":"Tu6!@#%&"},"status":201,"message":"Created"}
+[03/03/23, 08:29:05] [HTTP] {"url":"/auth/login","method":"POST","params":{},"query":{},"body":{"login":"TEST_AUTH_LOGIN","password":"Tu6!@#%&"},"status":200,"message":"OK"}
+[03/03/23, 08:29:05] [HTTP] {"url":"/auth/signup","method":"POST","params":{},"query":{},"body":{"login":"TEST_AUTH_LOGIN","password":"Tu6!@#%&"},"status":201,"message":"Created"}
+[03/03/23, 08:29:05] [HTTP] {"url":"/album","method":"GET","params":{},"query":{},"body":{},"status":200,"message":"OK"}
+[03/03/23, 08:29:05] [HTTP] {"url":"/album","method":"POST","params":{},"query":{},"body":{"name":"TEST_ALBUM","year":2022,"artistId":null},"status":201,"message":"Created"}
+[03/03/23, 08:29:05] [HTTP] {"url":"/auth/login","method":"POST","params":{},"query":{},"body":{"login":"TEST_AUTH_LOGIN","password":"Tu6!@#%&"},"status":200,"message":"OK"}
+[03/03/23, 08:29:05] [HTTP] {"url":"/auth/login","method":"POST","params":{},"query":{},"body":{"login":"TEST_AUTH_LOGIN","password":"Tu6!@#%&"},"status":200,"message":"OK"}
+[03/03/23, 08:29:05] [HTTP] {"url":"/album/781f4e50-38bb-434f-9711-bd1976ab51f3","method":"GET","params":{"id":"781f4e50-38bb-434f-9711-bd1976ab51f3"},"query":{},"body":{},"status":200,"message":"OK"}
+[03/03/23, 08:29:05] [HTTP] {"url":"/user","method":"GET","params":{},"query":{},"body":{},"status":200,"message":"OK"}
+[03/03/23, 08:29:05] [HTTP] {"url":"/favs","method":"GET","params":{},"query":{},"body":{},"status":200,"message":"OK"}
+[03/03/23, 08:29:05] [HTTP] {"url":"/artist","method":"POST","params":{},"query":{},"body":{"name":"TEST_artist","grammy":true},"status":201,"message":"Created"}
+[03/03/23, 08:29:05] [HTTP] {"url":"/album/781f4e50-38bb-434f-9711-bd1976ab51f3","method":"DELETE","params":{"id":"781f4e50-38bb-434f-9711-bd1976ab51f3"},"query":{},"body":{},"status":204,"message":"No Content"}
+[03/03/23, 08:29:05] [HTTP] {"url":"/user","method":"POST","params":{},"query":{},"body":{"login":"TEST_LOGIN","password":"TEST_PASSWORD"},"status":201,"message":"Created"}
+[03/03/23, 08:29:05] [HTTP] {"url":"/album","method":"POST","params":{},"query":{},"body":{"name":"TEST_ALBUM","year":2022,"artistId":"dfc82d64-cfab-40f1-b3b4-7b30b30819ac"},"status":201,"message":"Created"}
+[03/03/23, 08:29:06] [HTTP] {"url":"/user/15506b9a-a32a-4aee-a785-dbb5fbd2f4f3","method":"GET","params":{"id":"15506b9a-a32a-4aee-a785-dbb5fbd2f4f3"},"query":{},"body":{},"status":200,"message":"OK"}
+[03/03/23, 08:29:06] [HTTP] {"url":"/track","method":"POST","params":{},"query":{},"body":{"name":"Test track","duration":335,"artistId":"dfc82d64-cfab-40f1-b3b4-7b30b30819ac","albumId":"6765e2db-d186-4549-b507-9fb32b112531"},"status":201,"message":"Created"}
+[03/03/23, 08:29:06] [HTTP] {"url":"/album","method":"POST","params":{},"query":{},"body":{"name":"TEST_ALBUM","year":2022,"artistId":null},"status":201,"message":"Created"}
+[03/03/23, 08:29:06] [HTTP] {"url":"/user/15506b9a-a32a-4aee-a785-dbb5fbd2f4f3","method":"DELETE","params":{"id":"15506b9a-a32a-4aee-a785-dbb5fbd2f4f3"},"query":{},"body":{},"status":204,"message":"No Content"}
+[03/03/23, 08:29:06] [HTTP] {"url":"/favs/track/6494a61f-33e9-4a5e-bb2d-d795cf4998b9","method":"POST","params":{"id":"6494a61f-33e9-4a5e-bb2d-d795cf4998b9"},"query":{},"body":{},"status":201,"message":"Created"}
+[03/03/23, 08:29:06] [HTTP] {"url":"/album/b9aed286-02c0-4226-a707-e225101c32e5","method":"DELETE","params":{"id":"b9aed286-02c0-4226-a707-e225101c32e5"},"query":{},"body":{},"status":204,"message":"No Content"}
+[03/03/23, 08:29:06] [HTTP] {"url":"/favs/album/6765e2db-d186-4549-b507-9fb32b112531","method":"POST","params":{"id":"6765e2db-d186-4549-b507-9fb32b112531"},"query":{},"body":{},"status":201,"message":"Created"}
+[03/03/23, 08:29:06] [HTTP] {"url":"/user","method":"POST","params":{},"query":{},"body":{"login":"TEST_LOGIN","password":"TEST_PASSWORD"},"status":201,"message":"Created"}
+[03/03/23, 08:29:06] [HTTP] {"url":"/album","method":"POST","params":{},"query":{},"body":{"name":"TEST_ALBUM","year":2022,"artistId":null},"status":201,"message":"Created"}
+[03/03/23, 08:29:06] [HTTP] {"url":"/favs/artist/dfc82d64-cfab-40f1-b3b4-7b30b30819ac","method":"POST","params":{"id":"dfc82d64-cfab-40f1-b3b4-7b30b30819ac"},"query":{},"body":{},"status":201,"message":"Created"}
+[03/03/23, 08:29:06] [HTTP] {"url":"/user/f827d736-656e-4194-a35b-efc9d7039e49","method":"DELETE","params":{"id":"f827d736-656e-4194-a35b-efc9d7039e49"},"query":{},"body":{},"status":204,"message":"No Content"}
+[03/03/23, 08:29:06] [HTTP] {"url":"/favs","method":"GET","params":{},"query":{},"body":{},"status":200,"message":"OK"}
+[03/03/23, 08:29:06] [HTTP] {"url":"/artist","method":"POST","params":{},"query":{},"body":{"name":"TEST_artist","grammy":true},"status":201,"message":"Created"}
+[03/03/23, 08:29:07] [HTTP] {"url":"/album/238db863-ad9a-4121-b80d-a938bfcf70e7","method":"PUT","params":{"id":"238db863-ad9a-4121-b80d-a938bfcf70e7"},"query":{},"body":{"name":"TEST_ALBUM","year":2021,"artistId":"963938f0-bc6c-436b-b735-3306b4b0d46d"},"status":200,"message":"OK"}
+[03/03/23, 08:29:07] [HTTP] {"url":"/artist/dfc82d64-cfab-40f1-b3b4-7b30b30819ac","method":"DELETE","params":{"id":"dfc82d64-cfab-40f1-b3b4-7b30b30819ac"},"query":{},"body":{},"status":204,"message":"No Content"}
+[03/03/23, 08:29:07] [HTTP] {"url":"/user","method":"POST","params":{},"query":{},"body":{"login":"TEST_LOGIN","password":"TEST_PASSWORD"},"status":201,"message":"Created"}
+[03/03/23, 08:29:07] [HTTP] {"url":"/album/238db863-ad9a-4121-b80d-a938bfcf70e7","method":"DELETE","params":{"id":"238db863-ad9a-4121-b80d-a938bfcf70e7"},"query":{},"body":{},"status":204,"message":"No Content"}
+[03/03/23, 08:29:07] [HTTP] {"url":"/album/6765e2db-d186-4549-b507-9fb32b112531","method":"DELETE","params":{"id":"6765e2db-d186-4549-b507-9fb32b112531"},"query":{},"body":{},"status":204,"message":"No Content"}
+[03/03/23, 08:29:07] [HTTP] {"url":"/album","method":"POST","params":{},"query":{},"body":{"name":"TEST_ALBUM","year":2022,"artistId":null},"status":201,"message":"Created"}
+[03/03/23, 08:29:07] [HTTP] {"url":"/track/6494a61f-33e9-4a5e-bb2d-d795cf4998b9","method":"DELETE","params":{"id":"6494a61f-33e9-4a5e-bb2d-d795cf4998b9"},"query":{},"body":{},"status":204,"message":"No Content"}
+[03/03/23, 08:29:07] [HTTP] {"url":"/favs","method":"GET","params":{},"query":{},"body":{},"status":200,"message":"OK"}
+[03/03/23, 08:29:07] [HTTP] {"url":"/user/3e93b3e0-7f64-4f0d-a00f-cb09d564e98e","method":"PUT","params":{"id":"3e93b3e0-7f64-4f0d-a00f-cb09d564e98e"},"query":{},"body":{"oldPassword":"TEST_PASSWORD","newPassword":"NEW_PASSWORD"},"status":200,"message":"OK"}
+[03/03/23, 08:29:07] [HTTP] {"url":"/album","method":"POST","params":{},"query":{},"body":{"name":"TEST_ALBUM","year":2022,"artistId":null},"status":201,"message":"Created"}
+[03/03/23, 08:29:07] [HTTP] {"url":"/artist","method":"POST","params":{},"query":{},"body":{"name":"TEST_artist","grammy":true},"status":201,"message":"Created"}
+[03/03/23, 08:29:07] [HTTP] {"url":"/album/8b91e53b-650a-4d15-8645-3ae906b88a1b","method":"DELETE","params":{"id":"8b91e53b-650a-4d15-8645-3ae906b88a1b"},"query":{},"body":{},"status":204,"message":"No Content"}
+[03/03/23, 08:29:08] [HTTP] {"url":"/favs/artist/8de267d0-beee-42e6-aec3-3d84c2108aee","method":"POST","params":{"id":"8de267d0-beee-42e6-aec3-3d84c2108aee"},"query":{},"body":{},"status":201,"message":"Created"}
+[03/03/23, 08:29:08] [HTTP] {"url":"/user/3e93b3e0-7f64-4f0d-a00f-cb09d564e98e","method":"DELETE","params":{"id":"3e93b3e0-7f64-4f0d-a00f-cb09d564e98e"},"query":{},"body":{},"status":204,"message":"No Content"}
+[03/03/23, 08:29:08] [HTTP] {"url":"/favs","method":"GET","params":{},"query":{},"body":{},"status":200,"message":"OK"}
+[03/03/23, 08:29:08] [HTTP] {"url":"/album","method":"POST","params":{},"query":{},"body":{"name":"TEST_ALBUM","year":2022,"artistId":null},"status":201,"message":"Created"}
+[03/03/23, 08:29:08] [HTTP] {"url":"/album","method":"POST","params":{},"query":{},"body":{"name":"TEST_ALBUM","year":2022,"artistId":null},"status":201,"message":"Created"}
+[03/03/23, 08:29:08] [HTTP] {"url":"/track","method":"POST","params":{},"query":{},"body":{"name":"TEST_TRACK","duration":199,"artistId":null,"albumId":"c5e8ffdc-e911-47be-b790-2001d02058d8"},"status":201,"message":"Created"}
+[03/03/23, 08:29:08] [HTTP] {"url":"/favs/album/6b5866d9-58be-4654-81a5-230968995206","method":"POST","params":{"id":"6b5866d9-58be-4654-81a5-230968995206"},"query":{},"body":{},"status":201,"message":"Created"}
+[03/03/23, 08:29:08] [HTTP] {"url":"/favs","method":"GET","params":{},"query":{},"body":{},"status":200,"message":"OK"}
+[03/03/23, 08:29:08] [HTTP] {"url":"/user","method":"POST","params":{},"query":{},"body":{"login":"TEST_LOGIN","password":"TEST_PASSWORD"},"status":201,"message":"Created"}
+[03/03/23, 08:29:08] [HTTP] {"url":"/album/c5e8ffdc-e911-47be-b790-2001d02058d8","method":"DELETE","params":{"id":"c5e8ffdc-e911-47be-b790-2001d02058d8"},"query":{},"body":{},"status":204,"message":"No Content"}
+[03/03/23, 08:29:08] [HTTP] {"url":"/track/5585220d-4eff-40d9-8ca3-7a42d59ef566","method":"GET","params":{"id":"5585220d-4eff-40d9-8ca3-7a42d59ef566"},"query":{},"body":{},"status":200,"message":"OK"}
+[03/03/23, 08:29:08] [HTTP] {"url":"/track","method":"POST","params":{},"query":{},"body":{"name":"Test track","duration":335,"artistId":null,"albumId":null},"status":201,"message":"Created"}
+[03/03/23, 08:29:08] [HTTP] {"url":"/user/82f3bc7e-777c-4800-af57-af59f4377037","method":"DELETE","params":{"id":"82f3bc7e-777c-4800-af57-af59f4377037"},"query":{},"body":{},"status":204,"message":"No Content"}
+[03/03/23, 08:29:09] [HTTP] {"url":"/favs/track/8cfbc1c5-191a-4ca0-bb5b-411873172ad3","method":"POST","params":{"id":"8cfbc1c5-191a-4ca0-bb5b-411873172ad3"},"query":{},"body":{},"status":201,"message":"Created"}
+[03/03/23, 08:29:09] [HTTP] {"url":"/user/5aace95f-e55b-4332-be86-f87def048e3a","method":"DELETE","params":{"id":"5aace95f-e55b-4332-be86-f87def048e3a"},"query":{},"body":{},"status":204,"message":"No Content"}
+[03/03/23, 08:29:09] [HTTP] {"url":"/favs","method":"GET","params":{},"query":{},"body":{},"status":200,"message":"OK"}
+[03/03/23, 08:29:09] [HTTP] {"url":"/user/06d7f42e-c411-41c2-84f2-e87e13d62e2f","method":"DELETE","params":{"id":"06d7f42e-c411-41c2-84f2-e87e13d62e2f"},"query":{},"body":{},"status":204,"message":"No Content"}
+[03/03/23, 08:29:09] [HTTP] {"url":"/album","method":"POST","params":{},"query":{},"body":{"name":"TEST_ALBUM","year":2022,"artistId":null},"status":201,"message":"Created"}
+[03/03/23, 08:29:10] [HTTP] {"url":"/favs/album/e3cf8ae4-1d86-4876-923d-01bbf5a82a63","method":"POST","params":{"id":"e3cf8ae4-1d86-4876-923d-01bbf5a82a63"},"query":{},"body":{},"status":201,"message":"Created"}
+[03/03/23, 08:29:10] [HTTP] {"url":"/auth/signup","method":"POST","params":{},"query":{},"body":{"login":"TEST_AUTH_LOGIN","password":"Tu6!@#%&"},"status":201,"message":"Created"}
+[03/03/23, 08:29:10] [HTTP] {"url":"/favs/album/e3cf8ae4-1d86-4876-923d-01bbf5a82a63","method":"DELETE","params":{"id":"e3cf8ae4-1d86-4876-923d-01bbf5a82a63"},"query":{},"body":{},"status":204,"message":"No Content"}
+[03/03/23, 08:29:10] [HTTP] {"url":"/auth/login","method":"POST","params":{},"query":{},"body":{"login":"TEST_AUTH_LOGIN","password":"Tu6!@#%&"},"status":200,"message":"OK"}
+[03/03/23, 08:29:10] [HTTP] {"url":"/favs","method":"GET","params":{},"query":{},"body":{},"status":200,"message":"OK"}
+[03/03/23, 08:29:10] [HTTP] {"url":"/artist","method":"GET","params":{},"query":{},"body":{},"status":200,"message":"OK"}
+[03/03/23, 08:29:10] [HTTP] {"url":"/artist","method":"POST","params":{},"query":{},"body":{"name":"TEST_artist","grammy":true},"status":201,"message":"Created"}
+[03/03/23, 08:29:10] [HTTP] {"url":"/album/e3cf8ae4-1d86-4876-923d-01bbf5a82a63","method":"DELETE","params":{"id":"e3cf8ae4-1d86-4876-923d-01bbf5a82a63"},"query":{},"body":{},"status":204,"message":"No Content"}
+[03/03/23, 08:29:10] [HTTP] {"url":"/auth/signup","method":"POST","params":{},"query":{},"body":{"login":"TEST_AUTH_LOGIN","password":"Tu6!@#%&"},"status":201,"message":"Created"}
+[03/03/23, 08:29:10] [HTTP] {"url":"/artist/5eb3d49e-4001-40d0-9c5e-cbca936f79ca","method":"GET","params":{"id":"5eb3d49e-4001-40d0-9c5e-cbca936f79ca"},"query":{},"body":{},"status":200,"message":"OK"}
+[03/03/23, 08:29:10] [HTTP] {"url":"/artist","method":"POST","params":{},"query":{},"body":{"name":"TEST_artist","grammy":true},"status":201,"message":"Created"}
+[03/03/23, 08:29:10] [HTTP] {"url":"/artist/5eb3d49e-4001-40d0-9c5e-cbca936f79ca","method":"DELETE","params":{"id":"5eb3d49e-4001-40d0-9c5e-cbca936f79ca"},"query":{},"body":{},"status":204,"message":"No Content"}
+[03/03/23, 08:29:10] [HTTP] {"url":"/auth/login","method":"POST","params":{},"query":{},"body":{"login":"TEST_AUTH_LOGIN","password":"Tu6!@#%&"},"status":200,"message":"OK"}
+[03/03/23, 08:29:10] [HTTP] {"url":"/track","method":"GET","params":{},"query":{},"body":{},"status":200,"message":"OK"}
+[03/03/23, 08:29:10] [HTTP] {"url":"/favs/artist/fb052a40-ee2a-4830-af9a-e9bfc988c56e","method":"POST","params":{"id":"fb052a40-ee2a-4830-af9a-e9bfc988c56e"},"query":{},"body":{},"status":201,"message":"Created"}
+[03/03/23, 08:29:10] [HTTP] {"url":"/artist","method":"POST","params":{},"query":{},"body":{"name":"TEST_artist","grammy":true},"status":201,"message":"Created"}
+[03/03/23, 08:29:10] [HTTP] {"url":"/track","method":"POST","params":{},"query":{},"body":{"name":"TEST_TRACK","duration":199,"artistId":null,"albumId":null},"status":201,"message":"Created"}
+[03/03/23, 08:29:11] [HTTP] {"url":"/track/a14e035d-e7d8-4be7-8a02-26429401498a","method":"GET","params":{"id":"a14e035d-e7d8-4be7-8a02-26429401498a"},"query":{},"body":{},"status":200,"message":"OK"}
+[03/03/23, 08:29:11] [HTTP] {"url":"/favs/artist/fb052a40-ee2a-4830-af9a-e9bfc988c56e","method":"DELETE","params":{"id":"fb052a40-ee2a-4830-af9a-e9bfc988c56e"},"query":{},"body":{},"status":204,"message":"No Content"}
+[03/03/23, 08:29:11] [HTTP] {"url":"/artist/aa244c10-e12a-45ff-acdf-ce7ced160a15","method":"DELETE","params":{"id":"aa244c10-e12a-45ff-acdf-ce7ced160a15"},"query":{},"body":{},"status":204,"message":"No Content"}
+[03/03/23, 08:29:11] [HTTP] {"url":"/favs","method":"GET","params":{},"query":{},"body":{},"status":200,"message":"OK"}
+[03/03/23, 08:29:11] [HTTP] {"url":"/track/a14e035d-e7d8-4be7-8a02-26429401498a","method":"DELETE","params":{"id":"a14e035d-e7d8-4be7-8a02-26429401498a"},"query":{},"body":{},"status":204,"message":"No Content"}
+[03/03/23, 08:29:11] [HTTP] {"url":"/artist","method":"POST","params":{},"query":{},"body":{"name":"TEST_artist","grammy":true},"status":201,"message":"Created"}
+[03/03/23, 08:29:11] [HTTP] {"url":"/artist/fb052a40-ee2a-4830-af9a-e9bfc988c56e","method":"DELETE","params":{"id":"fb052a40-ee2a-4830-af9a-e9bfc988c56e"},"query":{},"body":{},"status":204,"message":"No Content"}
+[03/03/23, 08:29:11] [HTTP] {"url":"/track","method":"POST","params":{},"query":{},"body":{"name":"Test track","duration":335,"artistId":null,"albumId":null},"status":201,"message":"Created"}
+[03/03/23, 08:29:11] [HTTP] {"url":"/artist/834b1cff-199e-4f47-808d-7d605d30c80f","method":"PUT","params":{"id":"834b1cff-199e-4f47-808d-7d605d30c80f"},"query":{},"body":{"name":"TEST_artist","grammy":false},"status":200,"message":"OK"}
+[03/03/23, 08:29:11] [HTTP] {"url":"/track","method":"POST","params":{},"query":{},"body":{"name":"TEST_TRACK","duration":199,"artistId":null,"albumId":null},"status":201,"message":"Created"}
+[03/03/23, 08:29:11] [HTTP] {"url":"/artist/834b1cff-199e-4f47-808d-7d605d30c80f","method":"DELETE","params":{"id":"834b1cff-199e-4f47-808d-7d605d30c80f"},"query":{},"body":{},"status":204,"message":"No Content"}
+[03/03/23, 08:29:11] [HTTP] {"url":"/favs/track/dc774f54-0006-47b4-af55-a7db48f8ec0a","method":"POST","params":{"id":"dc774f54-0006-47b4-af55-a7db48f8ec0a"},"query":{},"body":{},"status":201,"message":"Created"}
+[03/03/23, 08:29:11] [HTTP] {"url":"/track/48569205-c4a0-4a76-8df6-a15e2b74664d","method":"DELETE","params":{"id":"48569205-c4a0-4a76-8df6-a15e2b74664d"},"query":{},"body":{},"status":204,"message":"No Content"}
+[03/03/23, 08:29:12] [HTTP] {"url":"/artist","method":"POST","params":{},"query":{},"body":{"name":"TEST_artist","grammy":true},"status":201,"message":"Created"}
+[03/03/23, 08:29:12] [HTTP] {"url":"/favs/track/dc774f54-0006-47b4-af55-a7db48f8ec0a","method":"DELETE","params":{"id":"dc774f54-0006-47b4-af55-a7db48f8ec0a"},"query":{},"body":{},"status":204,"message":"No Content"}
+[03/03/23, 08:29:12] [HTTP] {"url":"/track","method":"POST","params":{},"query":{},"body":{"name":"TEST_TRACK","duration":199,"artistId":null,"albumId":null},"status":201,"message":"Created"}
+[03/03/23, 08:29:12] [HTTP] {"url":"/favs","method":"GET","params":{},"query":{},"body":{},"status":200,"message":"OK"}
+[03/03/23, 08:29:12] [HTTP] {"url":"/artist","method":"POST","params":{},"query":{},"body":{"name":"TEST_artist","grammy":true},"status":201,"message":"Created"}
+[03/03/23, 08:29:12] [HTTP] {"url":"/track/afa7e54a-4c83-4530-b9bd-348bdbd55f4f","method":"PUT","params":{"id":"afa7e54a-4c83-4530-b9bd-348bdbd55f4f"},"query":{},"body":{"name":"TEST_TRACK","duration":188,"artistId":null,"albumId":null},"status":200,"message":"OK"}
+[03/03/23, 08:29:12] [HTTP] {"url":"/artist/0bc35350-214d-42a5-b16c-3061c9c8a8da","method":"DELETE","params":{"id":"0bc35350-214d-42a5-b16c-3061c9c8a8da"},"query":{},"body":{},"status":204,"message":"No Content"}
+[03/03/23, 08:29:12] [HTTP] {"url":"/track/dc774f54-0006-47b4-af55-a7db48f8ec0a","method":"DELETE","params":{"id":"dc774f54-0006-47b4-af55-a7db48f8ec0a"},"query":{},"body":{},"status":204,"message":"No Content"}
+[03/03/23, 08:29:12] [HTTP] {"url":"/track/afa7e54a-4c83-4530-b9bd-348bdbd55f4f","method":"DELETE","params":{"id":"afa7e54a-4c83-4530-b9bd-348bdbd55f4f"},"query":{},"body":{},"status":204,"message":"No Content"}
+[03/03/23, 08:29:12] [HTTP] {"url":"/track","method":"POST","params":{},"query":{},"body":{"name":"TEST_TRACK","duration":199,"artistId":null,"albumId":null},"status":201,"message":"Created"}
+[03/03/23, 08:29:13] [HTTP] {"url":"/artist","method":"POST","params":{},"query":{},"body":{"name":"TEST_artist","grammy":true},"status":201,"message":"Created"}
+[03/03/23, 08:29:13] [HTTP] {"url":"/track","method":"POST","params":{},"query":{},"body":{"name":"TEST_track","albumId":null,"artistId":"ae513b17-7cc0-4479-b71a-0ca138566a42","duration":200},"status":201,"message":"Created"}
+[03/03/23, 08:29:13] [HTTP] {"url":"/user/caa5b8ac-1ce7-4d18-8087-825588b323cc","method":"DELETE","params":{"id":"caa5b8ac-1ce7-4d18-8087-825588b323cc"},"query":{},"body":{},"status":204,"message":"No Content"}
+[03/03/23, 08:29:13] [HTTP] {"url":"/track","method":"POST","params":{},"query":{},"body":{"name":"TEST_TRACK","duration":199,"artistId":null,"albumId":null},"status":201,"message":"Created"}
+[03/03/23, 08:29:13] [HTTP] {"url":"/artist/ae513b17-7cc0-4479-b71a-0ca138566a42","method":"DELETE","params":{"id":"ae513b17-7cc0-4479-b71a-0ca138566a42"},"query":{},"body":{},"status":204,"message":"No Content"}
+[03/03/23, 08:29:13] [HTTP] {"url":"/track/1ee974c6-363e-4ce3-acc0-e0e49bfebc38","method":"DELETE","params":{"id":"1ee974c6-363e-4ce3-acc0-e0e49bfebc38"},"query":{},"body":{},"status":204,"message":"No Content"}
+[03/03/23, 08:29:13] [HTTP] {"url":"/track/e21b3376-eded-422d-b33b-0a55d9a3e272","method":"GET","params":{"id":"e21b3376-eded-422d-b33b-0a55d9a3e272"},"query":{},"body":{},"status":200,"message":"OK"}
+[03/03/23, 08:29:13] [HTTP] {"url":"/artist","method":"POST","params":{},"query":{},"body":{"name":"TEST_artist","grammy":true},"status":201,"message":"Created"}
+[03/03/23, 08:29:13] [HTTP] {"url":"/album","method":"POST","params":{},"query":{},"body":{"name":"TEST_album","year":2023,"artistId":"fd4d5424-ee74-4a6b-87ca-cf52c50ebb6c"},"status":201,"message":"Created"}
+[03/03/23, 08:29:13] [HTTP] {"url":"/user/699e61a9-9e28-4a1f-a80e-f7e22d897ae9","method":"DELETE","params":{"id":"699e61a9-9e28-4a1f-a80e-f7e22d897ae9"},"query":{},"body":{},"status":204,"message":"No Content"}
+[03/03/23, 08:29:13] [HTTP] {"url":"/artist/fd4d5424-ee74-4a6b-87ca-cf52c50ebb6c","method":"DELETE","params":{"id":"fd4d5424-ee74-4a6b-87ca-cf52c50ebb6c"},"query":{},"body":{},"status":204,"message":"No Content"}
+[03/03/23, 08:29:13] [HTTP] {"url":"/album/cba17646-4179-4f80-ac93-84411221254f","method":"GET","params":{"id":"cba17646-4179-4f80-ac93-84411221254f"},"query":{},"body":{},"status":200,"message":"OK"}
+[03/03/23, 08:29:13] [HTTP] {"url":"/user/bdcb5691-ce7d-4df1-b4de-e00604ea94b6","method":"DELETE","params":{"id":"bdcb5691-ce7d-4df1-b4de-e00604ea94b6"},"query":{},"body":{},"status":204,"message":"No Content"}
+[03/03/23, 08:33:45] [NestApplication] "Nest application successfully started"
